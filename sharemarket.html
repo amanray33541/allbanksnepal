@@ -252,7 +252,7 @@
 								2023--06-13 
 							</td>
 							<td>100</td>
-							<td><a href="#" class="btn btn-success">Open</a></td>
+							<td><a href="#" class="btn btn-success" id="timerButton1" >Open</a></td>
 						  </tr>
   
 						  <tr>
@@ -266,7 +266,7 @@
 									2023--06-19 
 								</td>
 							  <td>435</td>
-							  <td><a href="#" class="btn btn-warning">UPCOMING</a></td>
+							  <td><a href="#" class="btn btn-warning" id="timerButton2" >UPCOMING</a></td>
 							  
 							</tr>
 
@@ -301,7 +301,7 @@
 
 							  <tr>
 								<td>5</td>
-								<td>National Hydropower Company  Ltd.(RIGHT)</td>
+								<td>National Hydropower Company  Ltd.(Right)</td>
 								<td>Hydropower</td>
 								<td>1:0.5</td>
 								<td>Muktinath Capital</td>
@@ -310,9 +310,8 @@
 									soon
 								  </td>
 								<td>100</td>
-								<td><a href="#" class="btn btn-warning">UPCOMING</a></td>
+								<td><a href="#" class="btn btn-warning" >UPCOMING</a></td>
 							  </tr>
-
 
 
 						  
@@ -573,6 +572,85 @@
   <script src="js/accordions.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- <td><a href="#" class="btn btn-warning" id="timerButton10">10 hrs remaining</a></td>
+<td><a href="#" class="btn btn-warning" id="timerButton12">12 hrs remaining</a></td> -->
+
+<script>
+// Get the button elements
+const button10 = document.getElementById('timerButton1');
+const button12 = document.getElementById('timerButton2');
+
+// Set the target date and time (replace with your desired date and time)
+const targetDate10 = new Date('2023-06-09T10:15:00'); // 10 hours remaining
+const targetDate12 = new Date('2023-06-15T10:15:00'); // 12 hours remaining
+
+// Update the button texts every second
+setInterval(updateTimer10, 1000);
+setInterval(updateTimer12, 1000);
+
+function updateTimer10() {
+  // Get the current time
+  const currentTime = new Date().getTime();
+
+  // Calculate the remaining time in milliseconds
+  const remainingTime10 = targetDate10.getTime() - currentTime;
+
+  if (remainingTime10 > 0) {
+    // Calculate days, hours, minutes, and seconds
+    let days = Math.floor(remainingTime10 / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((remainingTime10 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((remainingTime10 % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((remainingTime10 % (1000 * 60)) / 1000);
+
+    // Format the remaining time
+    let formattedTime = "";
+    if (days > 0) {
+      formattedTime += `${days}d `;
+    }
+    formattedTime += `${hours}h ${minutes}m ${seconds}s`;
+
+    // Update the button text with the formatted remaining time
+    button10.textContent = formattedTime + " remaining";
+  } else {
+    // If the target time has passed, update the button text accordingly
+    button10.textContent = 'EXPIRED';
+  }
+}
+
+function updateTimer12() {
+  // Get the current time
+  const currentTime = new Date().getTime();
+
+  // Calculate the remaining time in milliseconds
+  const remainingTime12 = targetDate12.getTime() - currentTime;
+
+  if (remainingTime12 > 0) {
+    // Calculate days, hours, minutes, and seconds
+    let days = Math.floor(remainingTime12 / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((remainingTime12 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((remainingTime12 % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((remainingTime12 % (1000 * 60)) / 1000);
+
+    // Format the remaining time
+    let formattedTime = "";
+    if (days > 0) {
+      formattedTime += `${days}d `;
+    }
+    formattedTime += `${hours}h ${minutes}m ${seconds}s`;
+
+    // Update the button text with the formatted remaining time
+    button12.textContent = formattedTime + " remaining";
+  } else {
+    // If the target time has passed, update the button text accordingly
+    button12.textContent = 'EXPIRED';
+  }
+}
+</script>
+
+
+
+
 
 </body>
 </html>
