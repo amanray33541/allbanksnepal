@@ -187,7 +187,7 @@
 						  <td>Upper Lohore Khola Hydropower Company Ltd.</td>
 						  <td>Other</td>
 						  <td>3,53,000</td>
-						  <td>NI AsiaC Capital</td>
+						  <td>NIC Asia Capital</td>
 						  <td>Com
 							ing
 							<br>
@@ -203,12 +203,12 @@
 							<td>Insurance</td>
 							<td>1,20,000</td>
 							<td>civil Capital</td>
-							<td>Coming 
+							<td>2023-06-16
 							  <br>
-								Soon
+							  2023-06-30
 							</td>
 							<td>236.9</td>
-							<td><a href="#" class="btn btn-warning">UPCOMING</a></td>
+							<td><a href="#" class="btn btn-warning" id="timerButton1" >UPCOMING</a></td>
 						  </tr>
 
 						
@@ -387,6 +387,81 @@
   <script src="js/accordions.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+<script>
+	// Get the button elements
+	const button10 = document.getElementById('timerButton1');
+	const button12 = document.getElementById('timerButton2');
+	
+	// Set the target date and time (replace with your desired date and time)
+	const targetDate10 = new Date('2023-06-16T10:15:00'); // 10 hours remaining
+	const targetDate12 = new Date('2023-06-15T10:15:00'); // 12 hours remaining
+	
+	// Update the button texts every second
+	setInterval(updateTimer10, 1000);
+	setInterval(updateTimer12, 1000);
+	
+	function updateTimer10() {
+	  // Get the current time
+	  const currentTime = new Date().getTime();
+	
+	  // Calculate the remaining time in milliseconds
+	  const remainingTime10 = targetDate10.getTime() - currentTime;
+	
+	  if (remainingTime10 > 0) {
+		// Calculate days, hours, minutes, and seconds
+		let days = Math.floor(remainingTime10 / (1000 * 60 * 60 * 24));
+		let hours = Math.floor((remainingTime10 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		let minutes = Math.floor((remainingTime10 % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((remainingTime10 % (1000 * 60)) / 1000);
+	
+		// Format the remaining time
+		let formattedTime = "";
+		if (days > 0) {
+		  formattedTime += `${days}d `;
+		}
+		formattedTime += `${hours}h ${minutes}m ${seconds}s`;
+	
+		// Update the button text with the formatted remaining time
+		button10.textContent = formattedTime + " remaining";
+	  } else {
+		// If the target time has passed, update the button text accordingly
+		button10.textContent = 'OPEN';
+	  }
+	}
+	
+	function updateTimer12() {
+	  // Get the current time
+	  const currentTime = new Date().getTime();
+	
+	  // Calculate the remaining time in milliseconds
+	  const remainingTime12 = targetDate12.getTime() - currentTime;
+	
+	  if (remainingTime12 > 0) {
+		// Calculate days, hours, minutes, and seconds
+		let days = Math.floor(remainingTime12 / (1000 * 60 * 60 * 24));
+		let hours = Math.floor((remainingTime12 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		let minutes = Math.floor((remainingTime12 % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((remainingTime12 % (1000 * 60)) / 1000);
+	
+		// Format the remaining time
+		let formattedTime = "";
+		if (days > 0) {
+		  formattedTime += `${days}d `;
+		}
+		formattedTime += `${hours}h ${minutes}m ${seconds}s`;
+	
+		// Update the button text with the formatted remaining time
+		button12.textContent = formattedTime + " remaining";
+	  } else {
+		// If the target time has passed, update the button text accordingly
+		button12.textContent = 'OPEN';
+	  }
+	}
+	</script>
+	
 
 </body>
 </html>

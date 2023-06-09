@@ -299,8 +299,38 @@
 								<td><a href="#" class="btn btn-success">OPEN</a></td>
 							  </tr>
 
+
+
 							  <tr>
-								<td>5</td>
+								<th scope="row">5</th>
+								<td>IME life Insurance Company</td>
+								<td>Insurance</td>
+								<td>1,20,00,000</td>
+								<td>civil Capital</td>
+								<td>Coming 
+								  <br>
+									Soon
+								</td>
+								<td>236.9</td>
+								<td><a href="#" class="btn btn-warning" id="timerButton3" >UPCOMING</a></td>
+							  </tr>
+
+							  <tr>
+								<th scope="row">6</th>
+								<td>IME life Insurance Company(FOREIGN)</td>
+								<td>Insurance</td>
+								<td>1,20,00,000</td>
+								<td>civil Capital</td>
+								<td>2023-06-16
+									<br>
+									2023-06-30
+								  </td>
+								<td>236.9</td>
+								<td><a href="#" class="btn btn-warning" id="timerButton4" >UPCOMING</a></td>
+							  </tr>
+
+							  <tr>
+								<td>7</td>
 								<td>National Hydropower Company  Ltd.(Right)</td>
 								<td>Hydropower</td>
 								<td>1:0.5</td>
@@ -577,17 +607,24 @@
 <td><a href="#" class="btn btn-warning" id="timerButton12">12 hrs remaining</a></td> -->
 
 <script>
-// Get the button elements
+	// Get the button elements
+	// Get the button elements
 const button10 = document.getElementById('timerButton1');
 const button12 = document.getElementById('timerButton2');
+const button3 = document.getElementById('timerButton3');
+const button4 = document.getElementById('timerButton4');
 
 // Set the target date and time (replace with your desired date and time)
 const targetDate10 = new Date('2023-06-09T10:15:00'); // 10 hours remaining
 const targetDate12 = new Date('2023-06-15T10:15:00'); // 12 hours remaining
+const targetDate3 = new Date('2023-07-05T10:15:00'); // 10 hours remaining
+const targetDate4 = new Date('2023-06-16T10:15:00'); // 12 hours remaining
 
 // Update the button texts every second
 setInterval(updateTimer10, 1000);
 setInterval(updateTimer12, 1000);
+setInterval(updateTimer3, 1000);
+setInterval(updateTimer4, 1000);
 
 function updateTimer10() {
   // Get the current time
@@ -614,7 +651,7 @@ function updateTimer10() {
     button10.textContent = formattedTime + " remaining";
   } else {
     // If the target time has passed, update the button text accordingly
-    button10.textContent = 'EXPIRED';
+    button10.textContent = 'OPEN';
   }
 }
 
@@ -643,14 +680,70 @@ function updateTimer12() {
     button12.textContent = formattedTime + " remaining";
   } else {
     // If the target time has passed, update the button text accordingly
-    button12.textContent = 'EXPIRED';
+    button12.textContent = 'OPEN';
   }
 }
-</script>
 
+function updateTimer3() {
+  // Get the current time
+  const currentTime = new Date().getTime();
 
+  // Calculate the remaining time in milliseconds
+  const remainingTime3 = targetDate3.getTime() - currentTime;
 
+  if (remainingTime3 > 0) {
+    // Calculate days, hours, minutes, and seconds
+    let days = Math.floor(remainingTime3 / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((remainingTime3 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((remainingTime3 % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((remainingTime3 % (1000 * 60)) / 1000);
 
+    // Format the remaining time
+    let formattedTime = "";
+    if (days > 0) {
+      formattedTime += `${days}d `;
+    }
+    formattedTime += `${hours}h ${minutes}m ${seconds}s`;
+
+    // Update the button text with the formatted remaining time
+    button3.textContent = formattedTime + " remaining";
+  } else {
+    // If the target time has passed, update the button text accordingly
+    button3.textContent = 'OPEN';
+  }
+}
+
+function updateTimer4() {
+  // Get the current time
+  const currentTime = new Date().getTime();
+
+  // Calculate the remaining time in milliseconds
+  const remainingTime4 = targetDate4.getTime() - currentTime;
+
+  if (remainingTime4 > 0) {
+    // Calculate days, hours, minutes, and seconds
+    let days = Math.floor(remainingTime4 / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((remainingTime4 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((remainingTime4 % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((remainingTime4 % (1000 * 60)) / 1000);
+
+    // Format the remaining time
+    let formattedTime = "";
+    if (days > 0) {
+      formattedTime += `${days}d `;
+    }
+    formattedTime += `${hours}h ${minutes}m ${seconds}s`;
+
+    // Update the button text with the formatted remaining time
+    button4.textContent = formattedTime + " remaining";
+  } else {
+    // If the target time has passed, update the button text accordingly
+    button4.textContent = 'OPEN';
+  }
+}
+
+	</script>
+	
 
 </body>
 </html>
